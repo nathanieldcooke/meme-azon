@@ -36,6 +36,8 @@ class User(db.Model, UserMixin):
   created_at = db.Column(db.DateTime, nullable=False, default=today)
   updated_at = db.Column(db.DateTime, nullable=False, default=today)
 
+  memesInCart = db.relationship('MemesInCart', back_populates='user')
+
   @property
   def password(self):
     return self.hashed_password
