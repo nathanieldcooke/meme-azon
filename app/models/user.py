@@ -32,7 +32,6 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
   avatar = db.Column(db.String(360))
-  bio = db.Column(db.Text)
   created_at = db.Column(db.DateTime, nullable=False, default=today)
   updated_at = db.Column(db.DateTime, nullable=False, default=today)
 

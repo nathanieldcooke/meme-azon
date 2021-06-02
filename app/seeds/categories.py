@@ -1,7 +1,7 @@
 from app.models import db, Category
 
 def seed_categories():
-    categories = ['funny', 'sad', 'nsfw?', 'feel-good', 'what!?']
+    categories = ['funny', 'sad', 'anime', 'feel-good', 'what!?']
     for category in categories:
         new_category = Category(
             title=category
