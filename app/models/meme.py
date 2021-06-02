@@ -17,3 +17,4 @@ class Meme(db.Model):
 
     category = db.relationship('Category', back_populates='memes')
     memesInCart = db.relationship('MemesInCart', back_populates='meme')
+    reviews = db.relationship('Review', back_populates='meme')
