@@ -18,3 +18,14 @@ class Meme(db.Model):
     category = db.relationship('Category', back_populates='memes')
     memesInCart = db.relationship('MemesInCart', back_populates='meme')
     reviews = db.relationship('Review', back_populates='meme')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'src': self.src,
+            'name': self.name,
+            'price': self.price,
+            'quantityAvailable': self.quantityAvailable,
+            'description': self.description,
+            'categoryId': self.categoryId,
+        }
