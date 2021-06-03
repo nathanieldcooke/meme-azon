@@ -24,8 +24,12 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink className='nav_link' to="/sign-up" exact={true} activeClassName="active">
-           
             {(user) ? null : <button>Sign Up</button>}
+          </NavLink>
+        </li>
+        <li>
+          <NavLink className='nav_link' to="/shop" exact={true} activeClassName="active">
+            {(user) ? <button>Shop</button> : null}
           </NavLink>
         </li>
         {/* <li>
