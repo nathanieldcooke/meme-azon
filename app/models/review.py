@@ -15,3 +15,13 @@ class Review(db.Model):
 
     user = db.relationship('User', back_populates='reviews')
     meme = db.relationship('Meme', back_populates='reviews')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.userId,
+            'memeId': self.memeId,
+            'body': self.body,
+            'rating': self.rating,
+            'created_at': self.created_at
+        }
