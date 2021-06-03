@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 from app.models import db, Meme
-from flask_login import current_user, login_user
 
 meme_routes = Blueprint('memes', __name__)
 
@@ -19,4 +18,3 @@ def get_memes_by_cats(meme_cats):
         for meme in sub_memes:
             memes.append(meme)
     return { meme.id: meme.to_dict() for meme in memes }
-    
