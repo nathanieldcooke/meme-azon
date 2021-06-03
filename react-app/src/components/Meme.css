@@ -1,0 +1,45 @@
+.meme {
+    width: 20em;
+    /* height: 20em; */
+    padding: 1em;
+    /* display: flex; */
+    /* border: 1px solid black */
+}
+
+.meme-title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: .5em;
+}
+
+.meme-img {
+    width: 20em;
+    height: 20em;
+    padding-bottom: .25em;
+}
+
+.meme-img > img {
+    width: 20em;
+    height: 20em;
+}
+
+.price-stock {
+    display: flex;
+    width: inherit;
+    justify-content: space-between;
+    font-size: 1.25em;
+    font-weight: bold;
+    padding-bottom: .25em;
+}
+
+/* .meme-quantity {
+    display: flex;
+} */
+
+.add-to-cart {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: .25em;
+}
