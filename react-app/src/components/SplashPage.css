@@ -1,0 +1,22 @@
+.splash-main {
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* background-size: cover;
+    background-image: url('./images/ma-splash.jpeg'); */
+}
+
+.splash-title {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+.splash-intro {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+}

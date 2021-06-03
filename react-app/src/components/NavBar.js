@@ -1,33 +1,40 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import LogoutButton from './auth/LogoutButton';
+import './NavBar.css'
 
 const NavBar = () => {
+  const user = useSelector(state => state.session.user)
+
+
   return (
     <nav>
+      <span>Meme-Azon</span>
       <ul>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
+          <NavLink className='nav_link' to="/" exact={true} activeClassName="active">
+            <button>Home</button>
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
+          <NavLink className='nav_link' to="/login" exact={true} activeClassName="active">
+            {(user) ? null : <button>Log In</button>}
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
+          <NavLink className='nav_link' to="/sign-up" exact={true} activeClassName="active">
+           
+            {(user) ? null : <button>Sign Up</button>}
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
           </NavLink>
-        </li>
+        </li> */}
         <li>
-          <LogoutButton />
+          {(user) ? <LogoutButton/> : null}
         </li>
       </ul>
     </nav>

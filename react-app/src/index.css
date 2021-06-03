@@ -1,1 +1,7 @@
 /* TODO Add site wide styles */
+
+.background {
+    height: 100vh;
+    background-size: cover;
+    background-image: url('./components/images/ma-splash.jpeg');
+}

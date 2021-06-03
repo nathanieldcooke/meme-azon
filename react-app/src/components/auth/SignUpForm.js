@@ -44,55 +44,57 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>First Name</label>
-        <input
-          type="text"
-          name="firstname"
-          onChange={updateFirstname}
-          value={firstname}
-        ></input>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <input
-          type="text"
-          name="lastname"
-          onChange={updateLastname}
-          value={lastname}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          name="confirm_password"
-          onChange={updateConfirmPassword}
-          value={confirmPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className='main-form'>
+      <form onSubmit={onSignUp}>
+        <div>
+          <label>First Name</label>
+          <input
+            type="text"
+            name="firstname"
+            onChange={updateFirstname}
+            value={firstname}
+          ></input>
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastname"
+            onChange={updateLastname}
+            value={lastname}
+          ></input>
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div>
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div>
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="confirm_password"
+            onChange={updateConfirmPassword}
+            value={confirmPassword}
+            required={true}
+          ></input>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   );
 };
 
