@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteMemeInCartThunk } from "../store/cart";
 import './CartMeme.css'
 
-const CartMeme = ({cartMeme}) => {
+const CartMeme = ({cartItem, cartMeme}) => {
 
-    removeFromCart()
+    const dispatch = useDispatch()
+
+    const removeFromCart = (memeId) => {
+        dispatch(deleteMemeInCartThunk(memeId))
+    } 
 
     return (
         <>
@@ -15,11 +21,13 @@ const CartMeme = ({cartMeme}) => {
                 <span>Title: {cartMeme.name}</span>
                 <br></br>
                 <span>Price: ${cartMeme.price}/unit</span>
+                <br></br>
+                <span>Quantity: {cartItem.quantity}</span>
             </div>
             <div>
                 <button>Change Quantity</button>
                 <button
-                    onClick={() => removeFromCart()}
+                    onClick={() => removeFromCart(cartItem.id)}
                 >Remove Item</button>
             </div>
         </div>

@@ -20,7 +20,7 @@ const Cart = () => {
 
     const cartTotal = () => {
         return cartArr.reduce((accu, cartMeme) => {
-            return accu + Number(cartMeme.meme.price)
+            return accu + Number(cartMeme.meme.price) * cartMeme.quantity
         }, 0)
     }
 
@@ -29,7 +29,7 @@ const Cart = () => {
             <div >
                 <div className='cart-memes'>
                     {cartArr.map((cartMeme, idx) => (
-                        <CartMeme key={`meme-${idx}`} cartMeme={cartMeme.meme} />
+                        <CartMeme key={`meme-${idx}`} cartItem={cartMeme} cartMeme={cartMeme.meme} />
                     ))}
                 </div>
                 <div className='cart-total'>
