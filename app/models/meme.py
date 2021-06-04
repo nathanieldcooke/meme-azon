@@ -28,4 +28,5 @@ class Meme(db.Model):
             'quantityAvailable': self.quantityAvailable,
             'description': self.description,
             'categoryId': self.categoryId,
+            'reviews': {review.id: review.to_dict() for review in self.reviews}
         }

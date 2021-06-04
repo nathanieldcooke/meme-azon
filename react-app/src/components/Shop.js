@@ -16,7 +16,7 @@ const Shop = () => {
 
     useEffect(() => {
             dispatch(getMemesThunk())
-    }, [])
+    }, [dispatch])
 
     return (
         <div className='main-memes'>
