@@ -9,22 +9,32 @@ const Meme = ({meme}) => {
     // console.log(meme)
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    const reviews = useSelector(state => state.reviews)
 
 
     const [num, setNum] = useState(1);
     const [seeMore, setSeeMore] = useState(false);
+    const [showReview, setShowReview] = useState(false)
+    const [showLeaveReview, setShowLeaveReview] = useState(false)
+
+
 
     const getReviews = (reviewsObj) => {
+        console.log('REVOBJ: ',reviewsObj)
         const reviewArr = []
-        for (let rev_key in reviewsObj){
-            reviewArr.push(reviewsObj[rev_key])
-        }
+        reviewsObj.forEach((key) => {
+            reviewArr.push(reviews[key])
+        })
         return reviewArr
     }
 
     const addMeme = (user, meme, quantity) => {
         // console.log(user.id, meme.id, quantity)
         dispatch(addToCartThunk(user.id, meme.id, quantity))
+    }
+
+    const leaveReview = () => {
+
     }
 
     return (
@@ -88,11 +98,39 @@ const Meme = ({meme}) => {
                     <br></br>
                     <label>Reviews:</label>
                     <div>
-                        {getReviews(meme.reviews).map((review, idx) => (
+                        <div>
+                            {
+                            showReview 
+                            ? 
+                            <button
+                                onClick={() => {setShowReview(false)}}
+                            >Hide Reviews</button> 
+                            : 
+                            <button
+                                onClick={() => { setShowReview(true) }}
+                            >Show Reviews</button>}
+                                {
+                                showLeaveReview
+                                ?
+                                <>
+                                    <button
+                                        onClick={() => { setShowLeaveReview(false) }}
+                                    >Cancel</button>
+                                    <button
+                                        onClick={() => { leaveReview() }}
+                                    >Save</button>
+                                </>
+                                :
+                                <button
+                                    onClick={() => { setShowLeaveReview(true) }}
+                                >Leave Reviews</button>}
+                        </div>
+
+                        {showReview ? getReviews(Object.keys(meme.reviews)).map((review, idx) => (
                             <div key={`rev-${idx}`} className='review'>
                                 {review.body}
                             </div>
-                        ))}
+                        )): null }
                     </div>
                 </>
             :

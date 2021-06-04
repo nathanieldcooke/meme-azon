@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getMemesThunk } from "../store/memes";
+import { getReviewsThunk } from "../store/reviews";
 import Meme from "./Meme";
 import './Shop.css'
 // import './SplashPage.css'
 
 
 const Shop = () => {
-    
+
     const dispatch = useDispatch()
 
     const memes = useSelector(state => state.memes)
@@ -18,6 +19,10 @@ const Shop = () => {
 
     useEffect(() => {
             dispatch(getMemesThunk())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getReviewsThunk())
     }, [dispatch])
 
     return (
