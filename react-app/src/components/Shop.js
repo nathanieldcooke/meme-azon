@@ -7,7 +7,9 @@ import './Shop.css'
 
 
 const Shop = () => {
+    
     const dispatch = useDispatch()
+
     const memes = useSelector(state => state.memes)
     const memes_arr = [] 
     for (let meme_key in memes) {

@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import Shop from './components/Shop';
+import Cart from './components/Cart';
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
@@ -48,6 +49,9 @@ function App() {
         </ProtectedRoute> */}
         <Route path="/shop" exact={true}>
           <Shop />
+        </Route>
+        <Route path="/cart" exact={true}>
+          <Cart />
         </Route>
         <Route path="/" exact={true}>
           <SplashPage /> 
