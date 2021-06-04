@@ -1,0 +1,20 @@
+.cart-main-memes {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-memes {
+    height: 60vh;
+    /* width: ; */
+    overflow: scroll;
+}
+
+.cart-total {
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+}

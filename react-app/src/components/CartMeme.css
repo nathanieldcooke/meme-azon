@@ -1,0 +1,19 @@
+.cart-meme {
+    display: flex;
+}
+
+.cart-meme-img {
+    margin-right: 1em;
+    width: 12em;
+    height: 12em;
+    padding-bottom: .25em;
+}
+
+.cart-meme-img > img {
+    width: 12em;
+    height: 12em;
+}
+
+.cart-meme-title-price {
+    padding-right: 1em;
+}
