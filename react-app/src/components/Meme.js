@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartThunk } from "../store/cart";
+import { addReviewThunk } from "../store/reviews";
 import './Meme.css'
 // import './SplashPage.css'
 
@@ -16,15 +17,21 @@ const Meme = ({meme}) => {
     const [seeMore, setSeeMore] = useState(false);
     const [showReview, setShowReview] = useState(false)
     const [showLeaveReview, setShowLeaveReview] = useState(false)
+    const [body, setBody] = useState('')
+    const [rating, setRating] = useState(5)
 
 
 
-    const getReviews = (reviewsObj) => {
-        console.log('REVOBJ: ',reviewsObj)
+    const getReviews = (memeId) => {
+
         const reviewArr = []
-        reviewsObj.forEach((key) => {
-            reviewArr.push(reviews[key])
-        })
+
+        for (let reviewId in reviews){
+            let review = reviews[reviewId]
+            if (review.memeId === memeId) {
+                reviewArr.push(review)
+            }
+        }
         return reviewArr
     }
 
@@ -33,8 +40,9 @@ const Meme = ({meme}) => {
         dispatch(addToCartThunk(user.id, meme.id, quantity))
     }
 
-    const leaveReview = () => {
-
+    const leaveReview = (user, meme) => {
+        // console.log(user.id, meme.id, body, rating)
+        dispatch(addReviewThunk(user.id, meme.id, body, rating))
     }
 
     return (
@@ -113,20 +121,59 @@ const Meme = ({meme}) => {
                                 showLeaveReview
                                 ?
                                 <>
-                                    <button
-                                        onClick={() => { setShowLeaveReview(false) }}
-                                    >Cancel</button>
-                                    <button
-                                        onClick={() => { leaveReview() }}
-                                    >Save</button>
+                                    <div>
+                                        <button
+                                            onClick={() => { 
+                                                setShowLeaveReview(false) 
+                                                setBody('')
+                                                setRating(5)
+                                            }}
+                                        >Cancel</button>
+                                        <button
+                                            onClick={() => { leaveReview(user, meme) }}
+                                        >Save</button>
+                                    </div>
+                                    <div>
+                                        <label>Rating:</label>
+                                            <select
+                                                value={rating}
+                                                onChange={(e) => setRating(e.target.value)}
+                                            >
+                                                <option
+                                                    value={1}
+                                                >1</option>
+                                                    <option
+                                                    value={2}
+                                                >2</option>
+                                                <option
+                                                    value={3}
+                                                >3</option>
+                                                <option
+                                                    value={4}
+                                                >4</option>
+                                                <option
+                                                    value={5}
+                                                >5</option>
+                                            </select>
+                                        <label>Review:</label>
+                                        <input
+                                            placeholder='Your Review'
+                                            value={body}
+                                            onChange={(e) => setBody(e.target.value)}
+                                            required
+                                        />
+                                    </div>
                                 </>
                                 :
                                 <button
-                                    onClick={() => { setShowLeaveReview(true) }}
-                                >Leave Reviews</button>}
+                                    onClick={() => { 
+                                        setShowLeaveReview(true) 
+                                        setShowReview(true)
+                                    }}
+                                >Leave Review</button>}
                         </div>
 
-                        {showReview ? getReviews(Object.keys(meme.reviews)).map((review, idx) => (
+                        {showReview ? getReviews(meme.id).map((review, idx) => (
                             <div key={`rev-${idx}`} className='review'>
                                 {review.body}
                             </div>
