@@ -43,3 +43,37 @@
     justify-content: space-between;
     padding-bottom: .25em;
 }
+
+.num-avail {
+    margin: 0 .5em;
+    font-weight: bold;
+}
+
+.meme-show-button {
+    padding-bottom: .25em;
+}
+
+.review {
+    padding: .5em 0;
+}
+
+.meme label {
+    font-weight: bold;
+}
+
+.meme button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid black;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.meme button.pos {
+    background-color: greenyellow;
+    border-radius: 50%;
+}
+
+.meme button.neg {
+    background-color: red;
+    border-radius: 50%;
+}

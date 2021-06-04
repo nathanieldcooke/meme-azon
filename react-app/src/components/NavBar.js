@@ -32,6 +32,11 @@ const NavBar = () => {
             {(user) ? <button>Shop</button> : null}
           </NavLink>
         </li>
+        <li>
+          <NavLink className='nav_link' to="/cart" exact={true} activeClassName="active">
+            {(user) ? <button>Cart</button> : null}
+          </NavLink>
+        </li>
         {/* <li>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users

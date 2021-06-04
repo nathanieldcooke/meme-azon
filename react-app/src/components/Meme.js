@@ -8,7 +8,16 @@ import './Meme.css'
 const Meme = ({meme}) => {
     // console.log(meme)
 
-    const [num, setNum] = useState(1)
+    const [num, setNum] = useState(1);
+    const [seeMore, setSeeMore] = useState(false);
+
+    const getReviews = (reviewsObj) => {
+        const reviewArr = []
+        for (let rev_key in reviewsObj){
+            reviewArr.push(reviewsObj[rev_key])
+        }
+        return reviewArr
+    }
 
     return (
         <div className='meme'>
@@ -29,14 +38,56 @@ const Meme = ({meme}) => {
             <div className='add-to-cart'>
                 <button>Add To Cart</button>
                 <div className='meme-quantity'>
-                    <button>-</button>
-                    <span>{num}</span>
-                    <button>+</button>
+                    <button
+                    className='pos'
+                    onClick={() => { 
+                        if (num === 1){
+                            setNum(1)
+                        } else {
+                            setNum(num - 1) 
+                        }
+                    }}
+                    >-</button>
+                    <span className='num-avail'>{num}</span>
+                    <button
+                    className='neg'
+                    onClick={() => {
+                        if (num === meme.quantityAvailable){
+                            setNum(num)
+                        } else {
+                            setNum(num + 1)}
+                        }
+                    }
+                    >+</button>
                 </div>
             </div>
-            <div>
-                <button>See More Details</button>
+            <div className='meme-show-button'>
+                <button
+                    onClick={() => {
+                        seeMore ? setSeeMore(false) : setSeeMore(true)
+                    }}
+                >{seeMore ? "Show Less" : "See More Details"}</button>
             </div>
+            {
+            seeMore ? 
+                <>
+                    <label>Description:</label>
+                    <div>
+                        {meme.description}
+                    </div>
+                    <br></br>
+                    <label>Reviews:</label>
+                    <div>
+                        {getReviews(meme.reviews).map((review, idx) => (
+                            <div key={`rev-${idx}`} className='review'>
+                                {review.body}
+                            </div>
+                        ))}
+                    </div>
+                </>
+            :
+                null
+            }
         </div>
     )
 }
