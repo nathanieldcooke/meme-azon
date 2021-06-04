@@ -21,4 +21,5 @@ class MemesInCart(db.Model):
             'userId': self.userId,
             'memeId': self.memeId,
             'quantity': self.quantity,
+            'meme': self.meme.to_dict()
         }

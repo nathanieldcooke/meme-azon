@@ -28,14 +28,12 @@ def add_to_my_cart():
 
     return memeInCart.to_dict()
 
-@cart_routes.route('/', methods=['PATCH'])
-def edit_item_in_my_cart():
+@cart_routes.route('/<int:id>', methods=['PATCH'])
+def edit_item_in_my_cart(id):
 
-    data_userId = request.get_json()['userId']
-    data_memeId = request.get_json()['memeId']
     data_quantity = request.get_json()['quantity']
 
-    meme_in_cart = MemesInCart.query.filter(MemesInCart.userId == data_userId, MemesInCart.memeId == data_memeId).first()
+    meme_in_cart = MemesInCart.query.get(id)
 
     meme_in_cart.quantity = data_quantity
 
@@ -44,15 +42,12 @@ def edit_item_in_my_cart():
     return meme_in_cart.to_dict()
 
 
-@cart_routes.route('/<userId>/<memeId>', methods=['DELETE'])
-def delete_item_in_my_cart(userId, memeId):
+@cart_routes.route('/<int:id>', methods=['DELETE'])
+def delete_item_in_my_cart(id):
 
-    data_userId = userId
-    data_memeId = memeId
-
-    meme_in_cart = MemesInCart.query.filter(MemesInCart.userId == data_userId, MemesInCart.memeId == data_memeId).first()
+    meme_in_cart = MemesInCart.query.get(id)
 
     db.session.delete(meme_in_cart)
     db.session.commit()
 
-    return meme_in_cart.to_dict()
+    return str(meme_in_cart.id)

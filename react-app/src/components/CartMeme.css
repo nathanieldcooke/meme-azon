@@ -1,0 +1,36 @@
+.cart-meme {
+    display: flex;
+}
+
+.cart-meme-img {
+    margin-right: 1em;
+    width: 12em;
+    height: 12em;
+    padding-bottom: .25em;
+}
+
+.cart-meme-img > img {
+    width: 12em;
+    height: 12em;
+}
+
+.cart-meme-title-price {
+    padding-right: 1em;
+}
+
+.cart-meme button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid black;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.cart-meme button.pos {
+    background-color: greenyellow;
+    border-radius: 50%;
+}
+
+.cart-meme button.neg {
+    background-color: red;
+    border-radius: 50%;
+}
