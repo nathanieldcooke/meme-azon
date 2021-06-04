@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getMemesThunk } from "../store/memes";
+import { addToCartThunk } from "../store/cart";
 import './Meme.css'
 // import './SplashPage.css'
 
 
 const Meme = ({meme}) => {
     // console.log(meme)
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
+
 
     const [num, setNum] = useState(1);
     const [seeMore, setSeeMore] = useState(false);
@@ -17,6 +20,11 @@ const Meme = ({meme}) => {
             reviewArr.push(reviewsObj[rev_key])
         }
         return reviewArr
+    }
+
+    const addMeme = (user, meme, quantity) => {
+        // console.log(user.id, meme.id, quantity)
+        dispatch(addToCartThunk(user.id, meme.id, quantity))
     }
 
     return (
@@ -36,7 +44,9 @@ const Meme = ({meme}) => {
                 </span>
             </div>
             <div className='add-to-cart'>
-                <button>Add To Cart</button>
+                <button
+                    onClick={() => addMeme(user, meme, num)}
+                >Add To Cart</button>
                 <div className='meme-quantity'>
                     <button
                     className='pos'

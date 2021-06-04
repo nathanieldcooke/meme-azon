@@ -6,7 +6,7 @@ const addToCart = (meme) => ({
 })
 
 export const addToCartThunk = (userId, memeId, quantity) => async (dispatch) => {
-    const res = await fetch('/api/carts', {
+    const res = await fetch('/api/carts/', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -27,7 +27,8 @@ export default function cart(state = {}, action) {
     const stateDup = {...state}
     switch (action.type) {
         case ADD_TO_CART:
-            return stateDup[action.payload.id] = action.payload
+            stateDup[action.payload.id] = action.payload
+            return stateDup
         default:
             return state;
     }
