@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteMemeInCartThunk } from "../store/cart";
+import { deleteMemeInCartThunk, updateMemeInCartThunk } from "../store/cart";
 import './CartMeme.css'
 
 const CartMeme = ({cartItem, cartMeme}) => {
 
     const dispatch = useDispatch()
+    
+    const [change, setChange] = useState(false) 
+    const [num, setNum] = useState(cartItem.quantity);
 
     const removeFromCart = (memeId) => {
         dispatch(deleteMemeInCartThunk(memeId))
     } 
+
+    const updateQuantity = () => {
+        if (change) {
+            dispatch(updateMemeInCartThunk(cartItem.id, num))
+            setChange(false)
+        } else {
+            setChange(true)
+        }
+    }
 
     return (
         <>
@@ -25,10 +37,42 @@ const CartMeme = ({cartItem, cartMeme}) => {
                 <span>Quantity: {cartItem.quantity}</span>
             </div>
             <div>
-                <button>Change Quantity</button>
+                <button
+                    onClick={() => updateQuantity(cartItem.Id)}
+                    >{change ? 'Save' : 'Change Quantity'}</button>
                 <button
                     onClick={() => removeFromCart(cartItem.id)}
                 >Remove Item</button>
+                {
+                change 
+                ? 
+                <div className='meme-quantity'>
+                    <button
+                        className='pos'
+                        onClick={() => {
+                            if (num === 1) {
+                                setNum(1)
+                            } else {
+                                setNum(num - 1)
+                            }
+                        }}
+                    >-</button>
+                    <span className='num-avail'>{num}</span>
+                    <button
+                        className='neg'
+                        onClick={() => {
+                            if (num === cartMeme.quantityAvailable) {
+                                setNum(num)
+                            } else {
+                                setNum(num + 1)
+                            }
+                        }
+                        }
+                    >+</button>
+                </div>
+                :
+                null
+                }
             </div>
         </div>
         </>

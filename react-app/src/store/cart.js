@@ -1,5 +1,6 @@
 const ADD_TO_CART = 'cart/ADD_TO_CART'
 const GET_MEMES_IN_CART = 'cart/GET_MEMES_IN_CART'
+const UPDATE_MEME_IN_CART = 'cart/UPDATE_MEMES_IN_CART'
 const DELETE_MEME_IN_CART = 'cart/DELETE_MEME_IN_CART'
 
 const getMemesInCart = (memes) => ({
@@ -9,6 +10,11 @@ const getMemesInCart = (memes) => ({
 
 const addToCart = (meme) => ({
     type: ADD_TO_CART,
+    payload: meme
+})
+
+const updateMemeInCart = (meme) => ({
+    type: UPDATE_MEME_IN_CART,
     payload: meme
 })
 
@@ -47,6 +53,26 @@ export const addToCartThunk = (userId, memeId, quantity) => async (dispatch) => 
     }
 }
 
+export const updateMemeInCartThunk = (id, quantity) => async (dispatch) => {
+    const res = await fetch(`/api/carts/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ quantity })
+    })
+
+    try {
+        if (!res.ok) throw res
+        const meme = await res.json();
+
+        dispatch(updateMemeInCart(meme))
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
 
 export const deleteMemeInCartThunk = (id) => async (dispatch) => {
     const res = await fetch(`/api/carts/${id}`, {
@@ -71,6 +97,9 @@ export default function cart(state = {}, action) {
             return action.payload
         case ADD_TO_CART:
             stateDup[action.payload.id] = action.payload
+            return stateDup
+        case UPDATE_MEME_IN_CART:
+            stateDup[action.payload.id].quantity = action.payload.quantity
             return stateDup
         case DELETE_MEME_IN_CART:
             delete stateDup[action.payload]

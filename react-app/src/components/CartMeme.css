@@ -17,3 +17,20 @@
 .cart-meme-title-price {
     padding-right: 1em;
 }
+
+.cart-meme button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid black;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.cart-meme button.pos {
+    background-color: greenyellow;
+    border-radius: 50%;
+}
+
+.cart-meme button.neg {
+    background-color: red;
+    border-radius: 50%;
+}
