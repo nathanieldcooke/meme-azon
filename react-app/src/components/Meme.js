@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartThunk } from "../store/cart";
 import { addReviewThunk, deleteReviewThunk, editReviewThunk } from "../store/reviews";
@@ -62,7 +62,7 @@ const Meme = ({meme}) => {
                 {meme.name}
             </div>
             <div className='meme-img'>
-                <img src={`${meme.src}`}></img>
+                <img alt='item in cart' src={`${meme.src}`}></img>
             </div>
             <div className='price-stock'>
                 <span>
