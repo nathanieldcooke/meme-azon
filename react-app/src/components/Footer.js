@@ -15,6 +15,9 @@ const Footer = () => {
                 <span
                     onClick={() => window.open(`https://www.linkedin.com/in/nathaniel-cooke-257a1363/`, '_blank', 'noopener noreferrer')}
                 ><i className="fab fa-linkedin"></i></span>
+                <span
+                    onClick={() => window.open(`https://nathanieldcooke.github.io/`, '_blank', 'noopener noreferrer')}
+                ><i className="fas fa-folder"></i></span>
             </div>
         </div>
     )

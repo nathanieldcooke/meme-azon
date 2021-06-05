@@ -11,10 +11,20 @@
     height: 60vh;
     /* width: ; */
     overflow: scroll;
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    border-top: 5px solid black;
+    padding-top: .5em;
+
 }
 
 .cart-total {
     /* width: 100%; */
     display: flex;
     justify-content: space-between;
+    border: 5px solid black;
+    font-weight: bold;
+    background: white;
+    padding-right: .5em;
+    padding-left: .5em;
 }

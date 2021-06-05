@@ -1,5 +1,6 @@
 .cart-meme {
     display: flex;
+    justify-content: space-between;
 }
 
 .cart-meme-img {
