@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { deleteMemeInCartThunk, updateMemeInCartThunk } from "../store/cart";
 import './CartMeme.css'
 
@@ -27,7 +27,7 @@ const CartMeme = ({cartItem, cartMeme}) => {
         <>
         <div className='cart-meme'>
             <div className='cart-meme-img'>
-                <img src={`${cartMeme.src}`}></img>
+                <img alt='item in cart' src={`${cartMeme.src}`}></img>
             </div>
             <div className='cart-meme-title-price'>
                 <span>Title: {cartMeme.name}</span>

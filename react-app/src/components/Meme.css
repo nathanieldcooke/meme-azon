@@ -66,6 +66,7 @@
     border: 3px solid black;
     font-size: 1em;
     font-weight: bold;
+    transition: .5s;
 }
 
 .meme button.pos {
@@ -76,4 +77,11 @@
 .meme button.neg {
     background-color: red;
     border-radius: 50%;
+}
+
+.meme button:hover {
+    border: 3px solid white;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    transition: .5s;
 }

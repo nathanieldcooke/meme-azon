@@ -15,8 +15,11 @@ const Cart = () => {
     const dispatch = useDispatch()
     
     useEffect (() => {
-        dispatch(getMemesInCartThunk(user.id))
-    }, [])
+        // console.log('USER: ',user)
+        if (user) {
+            dispatch(getMemesInCartThunk(user?.id))
+        }
+    }, [dispatch, user])
 
     const cartTotal = () => {
         return cartArr.reduce((accu, cartMeme) => {

@@ -76,6 +76,27 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@auth_routes.route('/demosignup', methods=['POST'])
+def demo_sign_up():
+    """
+    Creates a new user and logs them in
+    """
+    form = SignUpForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User(
+            firstname=form.data['firstname'],
+            lastname=form.data['lastname'],
+            email=form.data['email'],
+            password=form.data['password']
+        )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """
