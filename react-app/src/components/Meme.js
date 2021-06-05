@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartThunk } from "../store/cart";
-import { addReviewThunk } from "../store/reviews";
+import { addReviewThunk, deleteReviewThunk, editReviewThunk } from "../store/reviews";
 import './Meme.css'
 // import './SplashPage.css'
 
@@ -19,6 +19,8 @@ const Meme = ({meme}) => {
     const [showLeaveReview, setShowLeaveReview] = useState(false)
     const [body, setBody] = useState('')
     const [rating, setRating] = useState(5)
+    const [edit, setEdit] = useState(false)
+    const [revTarget, setRevTarget] = useState(null)
 
 
 
@@ -43,6 +45,15 @@ const Meme = ({meme}) => {
     const leaveReview = (user, meme) => {
         // console.log(user.id, meme.id, body, rating)
         dispatch(addReviewThunk(user.id, meme.id, body, rating))
+    }
+
+    const deleteReview = (review) => {
+        dispatch(deleteReviewThunk(review.id))
+    }
+
+    const editReview = (review) => {
+        // body rating
+        dispatch(editReviewThunk(review.id, body, rating))
     }
 
     return (
@@ -175,7 +186,72 @@ const Meme = ({meme}) => {
 
                         {showReview ? getReviews(meme.id).map((review, idx) => (
                             <div key={`rev-${idx}`} className='review'>
-                                {review.body}
+                                {
+                                edit && revTarget === `rev-${review.id}`
+                                ?
+                                <>
+                                    <label>Rating:</label>
+                                    <select
+                                        value={rating}
+                                        onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <option
+                                            value={1}
+                                        >1</option>
+                                        <option
+                                            value={2}
+                                        >2</option>
+                                        <option
+                                            value={3}
+                                        >3</option>
+                                        <option
+                                            value={4}
+                                        >4</option>
+                                        <option
+                                            value={5}
+                                        >5</option>
+                                    </select>
+                                    <label>Review: </label>
+                                    <input
+                                        placeholder='Your Review'
+                                        value={body}
+                                        onChange={(e) => setBody(e.target.value)}
+                                        required
+                                    />
+                                </>
+                                :
+                                review.body}
+                                {
+                                    review.userId === user.id
+                                        ?
+                                        <>
+                                            {
+                                            edit && revTarget === `rev-${review.id}`
+                                            ?
+                                            <button
+                                                onClick={() => {
+                                                    setEdit(false)
+                                                    editReview(review)
+                                                }}
+                                            >Save</button>
+                                            : 
+                                            <button id={`rev-${review.id}`}
+                                                onClick={(e) => {
+                                                    setEdit(true)
+                                                    setRevTarget(e.target.id)
+                                                    console.log(e.target.value)
+                                                    setBody(review.body)
+                                                    setRating(review.rating)
+                                                }}
+                                            >Edit</button>
+                                            }
+                                            <button
+                                                onClick={() => deleteReview(review)}
+                                            >Delete</button>
+                                        </>
+                                        :
+                                        null
+                                }
                             </div>
                         )): null }
                     </div>

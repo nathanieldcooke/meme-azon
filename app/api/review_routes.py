@@ -29,14 +29,13 @@ def add_review():
 
     return review.to_dict()
 
-@review_routes.route('/', methods=['PATCH'])
-def edit_item_in_my_cart():
+@review_routes.route('/<id>', methods=['PATCH'])
+def edit_item_in_my_cart(id):
 
-    data_id = request.get_json()['id']
     data_body = request.get_json()['body']
     data_rating = request.get_json()['rating']
 
-    review = Review.query.get(data_id)
+    review = Review.query.get(id)
     review.body = data_body
     review.rating = data_rating
 
@@ -53,4 +52,4 @@ def delete_item_in_my_cart(reviewId):
     db.session.delete(review)
     db.session.commit()
 
-    return review.to_dict()
+    return str(review.id)
