@@ -46,3 +46,11 @@ nav button:hover {
     background: black;
     color: white
 }
+
+.items-in-cart {
+    background-color: red;
+    color: white;
+    border-radius: 100%;
+    padding-right: .3em;
+    padding-left: .3em;
+}
