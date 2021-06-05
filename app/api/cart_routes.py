@@ -28,7 +28,7 @@ def add_to_my_cart():
 
     return memeInCart.to_dict()
 
-@cart_routes.route('/<int:id>', methods=['PATCH'])
+@cart_routes.route('/<int:id>', methods=['PUT'])
 def edit_item_in_my_cart(id):
 
     data_quantity = request.get_json()['quantity']

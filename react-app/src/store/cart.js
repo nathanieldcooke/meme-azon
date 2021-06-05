@@ -55,7 +55,7 @@ export const addToCartThunk = (userId, memeId, quantity) => async (dispatch) => 
 
 export const updateMemeInCartThunk = (id, quantity) => async (dispatch) => {
     const res = await fetch(`/api/carts/${id}`, {
-        method: "PATCH",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },

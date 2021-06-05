@@ -1,0 +1,34 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* font-size: 2em; */
+    height: 6em;
+    width: 100%;
+    background-color: grey;
+    border-top: 2px solid black;
+    padding-right: 2em;
+    padding-left: 2em;
+    position: absolute;
+    bottom: 0px;
+}
+
+.footer > span {
+    font-size: 2em;
+    color: white;
+}
+
+.footer i {
+font-size: 3em;
+margin-right: 1em;
+color: white;
+padding: .35em;
+border-radius: 50%;
+transition: .5s;
+}
+
+.footer i:hover {
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}

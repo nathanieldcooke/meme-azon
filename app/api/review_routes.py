@@ -29,7 +29,7 @@ def add_review():
 
     return review.to_dict()
 
-@review_routes.route('/<id>', methods=['PATCH'])
+@review_routes.route('/<id>', methods=['PUT'])
 def edit_item_in_my_cart(id):
 
     data_body = request.get_json()['body']
