@@ -56,7 +56,7 @@ export const addReviewThunk = (userId, memeId, body, rating) => async (dispatch)
 
 export const editReviewThunk = (id, body, rating) => async (dispatch) => {
     const res = await fetch(`/api/reviews/${id}`, {
-        method: "PATCH",
+        method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },

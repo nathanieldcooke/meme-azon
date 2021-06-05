@@ -10,6 +10,7 @@ import SplashPage from "./components/SplashPage";
 import Shop from './components/Shop';
 import Cart from './components/Cart';
 import { authenticate } from "./store/session";
+import Footer from "./components/Footer";
 
 function App() {
   // const user = useSelector(state => state.session.user)
@@ -61,6 +62,7 @@ function App() {
           <SplashPage /> 
         </Route>
       </Switch>
+      <Footer/>
       </div>
     </BrowserRouter>
   );

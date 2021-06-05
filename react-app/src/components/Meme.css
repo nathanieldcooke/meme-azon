@@ -18,6 +18,7 @@
     width: 20em;
     height: 20em;
     padding-bottom: .25em;
+    overflow: hidden;
 }
 
 .meme-img > img {
