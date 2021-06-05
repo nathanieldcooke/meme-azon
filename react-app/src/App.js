@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import DemoSignUpForm from "./components/auth/DemoSignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
@@ -39,6 +40,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
+        <Route path="/demo-sign-up" exact={true}>
+          <DemoSignUpForm />
+        </Route>
         {/* <ProtectedRoute path="/users" exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -47,9 +51,9 @@ function App() {
         </ProtectedRoute> */}
         {/* <ProtectedRoute path="/" exact={true} >
         </ProtectedRoute> */}
-        <Route path="/shop" exact={true}>
+        <ProtectedRoute path="/shop" exact={true} >
           <Shop />
-        </Route>
+        </ProtectedRoute>
         <Route path="/cart" exact={true}>
           <Cart />
         </Route>
