@@ -239,6 +239,7 @@ const Meme = ({meme, inCart, reviewRatings}) => {
                         {showReview ? getReviews(meme.id).map((review, idx) => (
                             <div key={`rev-${idx}`} className='review'>
                                 <div>{`${review.firstName} ${review.lastName}`}</div>
+                                <div>{renderStars(review.rating)}</div>
                                 {
                                 edit && revTarget === `rev-${review.id}`
                                 ?
