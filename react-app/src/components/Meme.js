@@ -218,13 +218,6 @@ const Meme = ({meme, inCart, reviewRatings}) => {
                                 :
                                 leftRevsMemeId.has(meme.id)
                                 ?
-                                // <button
-                                //     onClick={() => {
-                                //         setShowLeaveReview(true)
-                                //         setShowReview(true)
-                                //     }}
-                                // >See My Review</button>
-                                // <span>Review Left</span>
                                 null
                                 :
                                 <button
