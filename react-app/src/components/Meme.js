@@ -6,7 +6,7 @@ import './Meme.css'
 // import './SplashPage.css'
 
 
-const Meme = ({meme, inCart}) => {
+const Meme = ({meme, inCart, reviewRatings}) => {
     // console.log(meme)
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -23,7 +23,7 @@ const Meme = ({meme, inCart}) => {
     const [revTarget, setRevTarget] = useState(null)
     const [leftRevsMemeId, setLeftRevsMemeId] = useState(new Set())
 
-
+    // identitys memes that a user has left reviews on
     useEffect(() => {
         if (reviews) {
             for (let review_key in reviews) {
@@ -34,7 +34,6 @@ const Meme = ({meme, inCart}) => {
             }
         }
     }, [reviews])
-
 
 
     const getReviews = (memeId) => {
@@ -48,6 +47,15 @@ const Meme = ({meme, inCart}) => {
             }
         }
         return reviewArr
+    }
+
+    const renderStars = (num) => {
+        if (num === 1) return <span><span className='fas fa-star'></span></span>
+        if (num === 2) return <span><span className='fas fa-star'></span><span className='fas fa-star'></span></span>
+        if (num === 3) return <span><span className='fas fa-star'></span><span className='fas fa-star'></span><span className='fas fa-star'></span></span>
+        if (num === 4) return <><span className='fas fa-star'></span><span className='fas fa-star'></span><span className='fas fa-star'></span><span className='fas fa-star'></span></>
+        if (num === 5) return <span><span className='fas fa-star'></span><span className='fas fa-star'></span><span className='fas fa-star'></span><span className='fas fa-star'></span><span className='fas fa-star'></span></span>
+
     }
 
     const addMeme = (user, meme, quantity) => {
@@ -84,6 +92,9 @@ const Meme = ({meme, inCart}) => {
                 <span>
                     In Stock: {meme.quantityAvailable}
                 </span>
+            </div>
+            <div>
+                {renderStars(reviewRatings[meme.id])}
             </div>
             <div className='add-to-cart'>
                 {
