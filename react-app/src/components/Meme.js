@@ -6,7 +6,7 @@ import './Meme.css'
 // import './SplashPage.css'
 
 
-const Meme = ({meme}) => {
+const Meme = ({meme, inCart}) => {
     // console.log(meme)
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
@@ -86,6 +86,12 @@ const Meme = ({meme}) => {
                 </span>
             </div>
             <div className='add-to-cart'>
+                {
+                inCart
+                ?
+                <div className='meme-in-cart'>Meme Is In Cart</div>
+                :
+                <>
                 <button
                     onClick={() => addMeme(user, meme, num)}
                 >Add To Cart</button>
@@ -112,6 +118,8 @@ const Meme = ({meme}) => {
                     }
                     >+</button>
                 </div>
+                </>
+                }
             </div>
             <div className='meme-show-button'>
                 <button

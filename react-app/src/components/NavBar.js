@@ -6,6 +6,7 @@ import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
+  const cart = useSelector(state => state.cart)
 
 
   return (
@@ -39,7 +40,7 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink className='nav_link' to="/cart" exact={true} activeClassName="active">
-            {(user) ? <button>Cart</button> : null}
+            {(user) ? <button>Cart <span className='items-in-cart'>{Object.keys(cart).length}</span></button> : null}
           </NavLink>
         </li>
         {/* <li>
