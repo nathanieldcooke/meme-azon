@@ -20,6 +20,8 @@ class Review(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
+            'firstName': self.user.firstname,
+            'lastName': self.user.lastname,
             'memeId': self.memeId,
             'body': self.body,
             'rating': self.rating,

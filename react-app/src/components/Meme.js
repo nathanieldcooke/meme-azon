@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartThunk } from "../store/cart";
 import { addReviewThunk, deleteReviewThunk, editReviewThunk } from "../store/reviews";
@@ -21,6 +21,19 @@ const Meme = ({meme}) => {
     const [rating, setRating] = useState(5)
     const [edit, setEdit] = useState(false)
     const [revTarget, setRevTarget] = useState(null)
+    const [leftRevsMemeId, setLeftRevsMemeId] = useState(new Set())
+
+
+    useEffect(() => {
+        if (reviews) {
+            for (let review_key in reviews) {
+                let review = reviews[review_key]
+                if (review.userId === user?.id) { 
+                    setLeftRevsMemeId(leftRevsMemeId.add(review.memeId))
+                }
+            }
+        }
+    }, [reviews])
 
 
 
@@ -141,7 +154,15 @@ const Meme = ({meme}) => {
                                             }}
                                         >Cancel</button>
                                         <button
-                                            onClick={() => { leaveReview(user, meme) }}
+                                            onClick={() => { 
+                                                leaveReview(user, meme) 
+                                                setShowLeaveReview(false)
+                                                leftRevsMemeId.add(meme.id)
+                                                setLeftRevsMemeId(leftRevsMemeId)
+
+                                                setBody('')
+                                                setRating(5)
+                                            }}
                                         >Save</button>
                                     </div>
                                     <div>
@@ -176,16 +197,29 @@ const Meme = ({meme}) => {
                                     </div>
                                 </>
                                 :
+                                leftRevsMemeId.has(meme.id)
+                                ?
+                                // <button
+                                //     onClick={() => {
+                                //         setShowLeaveReview(true)
+                                //         setShowReview(true)
+                                //     }}
+                                // >See My Review</button>
+                                // <span>Review Left</span>
+                                null
+                                :
                                 <button
                                     onClick={() => { 
                                         setShowLeaveReview(true) 
                                         setShowReview(true)
                                     }}
-                                >Leave Review</button>}
+                                >Leave Review</button>
+                                }
                         </div>
 
                         {showReview ? getReviews(meme.id).map((review, idx) => (
                             <div key={`rev-${idx}`} className='review'>
+                                <div>{`${review.firstName} ${review.lastName}`}</div>
                                 {
                                 edit && revTarget === `rev-${review.id}`
                                 ?
@@ -232,6 +266,10 @@ const Meme = ({meme}) => {
                                                 onClick={() => {
                                                     setEdit(false)
                                                     editReview(review)
+                                                    setShowLeaveReview(false)
+                                                    setEdit(false)
+                                                    setBody('')
+                                                    setRating(5)
                                                 }}
                                             >Save</button>
                                             : 
@@ -246,7 +284,11 @@ const Meme = ({meme}) => {
                                             >Edit</button>
                                             }
                                             <button
-                                                onClick={() => deleteReview(review)}
+                                                onClick={() => {
+                                                    deleteReview(review)
+                                                    leftRevsMemeId.delete(meme.id)
+                                                    setLeftRevsMemeId(leftRevsMemeId)
+                                                }}
                                             >Delete</button>
                                         </>
                                         :
