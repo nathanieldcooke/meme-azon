@@ -73,7 +73,7 @@ const DemoLoginForm = () => {
                         type="text"
                         placeholder="Email"
                         value={email}
-                        // onChange={updateEmail}
+                        onChange={() => {}} // voids warning from react, dont need for auto-fill
                     />
                 </div>
                 <div>
@@ -83,7 +83,7 @@ const DemoLoginForm = () => {
                         type="password"
                         placeholder="Password"
                         value={password}
-                        // onChange={updatePassword}
+                        onChange={() => {}} // voids warning from react, dont need for auto-fill
                     />
                 </div>
                 <button type="submit">Login</button>
