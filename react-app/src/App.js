@@ -11,6 +11,7 @@ import Shop from './components/Shop';
 import Cart from './components/Cart';
 import { authenticate } from "./store/session";
 import Footer from "./components/Footer";
+import DemoLoginForm from "./components/auth/DemoLoginForm";
 
 function App() {
   // const user = useSelector(state => state.session.user)
@@ -35,6 +36,9 @@ function App() {
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
+        </Route>
+        <Route path="/demo-login" exact={true}>
+          <DemoLoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />

@@ -7,16 +7,15 @@ fake = Faker()
 # Adds a demo user, you can add other users here if you want
 def seed_users():
 
-    # demo = User(
-    #     firstname="Demo", 
-    #     lastname="User", 
-    #     email='demo@aa.io',
-    #     password='password'
-    # )
+    demo = User(
+        firstname="Demo", 
+        lastname="User", 
+        email='demo@demo-mail.com',
+        password='password54321!'
+    )
 
-    # db.session.add(demo)
-
-    # db.session.commit()
+    db.session.add(demo)
+    db.session.commit()
 
     for _i in range(20):
         new_user = User(

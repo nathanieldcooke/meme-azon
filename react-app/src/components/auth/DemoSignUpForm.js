@@ -51,19 +51,19 @@ const DemoSignUpForm = () => {
         const updateFunc = async () => {
             await sleep(50)
             if (emailArr.length) {
-                setEmail(email + emailArr[0])
+                setEmail(email => email + emailArr[0])
                 setEmailArr(emailArr.slice(1, emailArr.length))
             } else if (firstnameArr.length) {
-                setFirstname(firstname + firstnameArr[0])
+                setFirstname(firstname => firstname + firstnameArr[0])
                 setFirstnameArr(firstnameArr.slice(1, firstnameArr.length))
             } else if (lastnameArr.length) {
-                setLastname(lastname + lastnameArr[0])
+                setLastname(lastname => lastname + lastnameArr[0])
                 setLastnameArr(lastnameArr.slice(1, lastnameArr.length))
             } else if (passwordArr.length) {
-                setPassword(password + passwordArr[0])
+                setPassword(password => password + passwordArr[0])
                 setPasswordArr(passwordArr.slice(1, passwordArr.length))
             } else if (confirmPasswordArr.length) {
-                setConfirmPassword(confirmPassword + confirmPasswordArr[0])
+                setConfirmPassword(confirmPassword => confirmPassword + confirmPasswordArr[0])
                 setConfirmPasswordArr(confirmPasswordArr.slice(1, confirmPasswordArr.length))
             } else {
                 onSignUp()
