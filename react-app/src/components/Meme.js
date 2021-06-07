@@ -185,6 +185,16 @@ const Meme = ({meme, inCart, reviewRatings}) => {
                                         >Save</button>
                                     </div>
                                     <div>
+                                        <label>Review:</label>
+                                        <textarea
+                                        className='review-input'
+                                            placeholder='Your Review'
+                                            value={body}
+                                            rows={4}
+                                            onChange={(e) => setBody(e.target.value)}
+                                            required
+                                        />
+                                        <br></br>
                                         <label>Rating:</label>
                                             <select
                                                 value={rating}
@@ -206,13 +216,6 @@ const Meme = ({meme, inCart, reviewRatings}) => {
                                                     value={5}
                                                 >5</option>
                                             </select>
-                                        <label>Review:</label>
-                                        <input
-                                            placeholder='Your Review'
-                                            value={body}
-                                            onChange={(e) => setBody(e.target.value)}
-                                            required
-                                        />
                                     </div>
                                 </>
                                 :
