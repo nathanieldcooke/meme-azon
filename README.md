@@ -12,11 +12,20 @@ _meme-azon_, modeled after the e-commerce giant [Amazon](https://amazon.com/), i
 ## Prerequisites
 
 Before you begin, please check the following Wiki documents:
-* [Feature List](https://github.com/rsdimatulac/SlackX/wiki/Feature-List)
-* [Database Schema](https://github.com/rsdimatulac/SlackX/wiki/Database-Schema)
-* [API Routes](https://github.com/rsdimatulac/SlackX/wiki/API-Routes)
+* [MVP Feature List](https://github.com/nathanieldcooke/meme-azon/wiki/MVP-Feature-List)
+List of features needed for the minimum viable product(MVP).
+
+* [Database Schema](https://github.com/nathanieldcooke/meme-azon/wiki/Database-Schema)
+SQLAlchemy Database Schema.
+
+* [API Routes](https://github.com/nathanieldcooke/meme-azon/wiki/API-Routes)
+API routes will be used by the frontend for accessing the database from the backend and dynamically update the page. 
+
 * [Frontend Routes](https://github.com/rsdimatulac/SlackX/wiki/Frontend-Routes)
-* [User Stories](https://github.com/rsdimatulac/SlackX/wiki/User-Stories)
+Routes that return a page that the user can interact with.
+
+* [Wire Frames](https://github.com/nathanieldcooke/meme-azon/wiki/Wire-Frames)
+Wire frames relative to frontend routes.
 
 ## Technologies used:
 #### Backend
@@ -25,7 +34,6 @@ Before you begin, please check the following Wiki documents:
 * SQLAlchemy
 * PostgreSQL
 * Docker
-* `socket.io` for live chat
 * `wtforms`, `wtforms validators`
 * `faker` for seed data
 
@@ -35,8 +43,6 @@ Before you begin, please check the following Wiki documents:
 * JavaScript
 * HTML, Vanilla CSS
 * Heroku (for hosting services)
-* AWS (photo bucket)
-* `react-icons`, `date-fns`
 
 ### Code Highlights / Challenges
 
