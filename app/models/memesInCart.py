@@ -3,7 +3,7 @@ from .db import db
 
 
 class MemesInCart(db.Model):
-    __tablename__ = 'memesInCart'
+    __tablename__ = 'memesincart'
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
