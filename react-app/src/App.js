@@ -12,6 +12,7 @@ import Cart from './components/Cart';
 import { authenticate } from "./store/session";
 import Footer from "./components/Footer";
 import DemoLoginForm from "./components/auth/DemoLoginForm";
+import Purchase from "./components/Purchase";
 
 function App() {
   // const user = useSelector(state => state.session.user)
@@ -59,6 +60,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/cart" exact={true} >
           <Cart />
+        </ProtectedRoute>
+        <ProtectedRoute path="/purchases" exact={true} >
+          <Purchase />
         </ProtectedRoute>
         {/* <Route path="/cart" exact={true}>
         </Route> */}
