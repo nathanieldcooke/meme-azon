@@ -11,11 +11,11 @@ class Meme(db.Model):
     price = db.Column(db.Float, nullable=False)
     quantityAvailable = db.Column(db.Integer, nullable=False)
     description = db.Column(db.String, nullable=False)
-    categoryId = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
+    # categoryId = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
 
-    category = db.relationship('Category', back_populates='memes')
+    # category = db.relationship('Category', back_populates='memes')
     memesInCart = db.relationship('MemesInCart', back_populates='meme')
     reviews = db.relationship('Review', back_populates='meme')
 
@@ -27,6 +27,6 @@ class Meme(db.Model):
             'price': self.price,
             'quantityAvailable': self.quantityAvailable,
             'description': self.description,
-            'categoryId': self.categoryId,
+            # 'categoryId': self.categoryId,
             'reviews': {review.id: review.to_dict() for review in self.reviews}
         }
