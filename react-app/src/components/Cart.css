@@ -25,6 +25,21 @@
     border: 5px solid black;
     font-weight: bold;
     background: white;
-    padding-right: .5em;
-    padding-left: .5em;
+    /* padding-right: .5em;
+    padding-left: .5em; */
+    padding: .25em .5em;
+    font-size: 2em;
+}
+
+.cart-total button {
+    background: greenyellow;
+    border: 3px solid black;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.cart-total button:hover {
+    background: black;
+    color: greenyellow;
+    border:3px solid greenyellow
 }

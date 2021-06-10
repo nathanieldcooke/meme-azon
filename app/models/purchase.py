@@ -26,7 +26,7 @@ class Purchase(db.Model):
             'price': self.price,
             'quantity': self.quantity,
             'total': self.total,
-            'purchaseId': self.purchase_id,
+            'purchaseId': self.purchaseId,
             'meme': self.meme.to_dict(),
             'user': self.user.to_dict(),
         }
