@@ -6,9 +6,9 @@ const SubPurchase = ( { subPurchase } ) => {
             <tr className='item-row' key={`key-${purchase.id}`}>
                 <td>{}</td>
                 <td>{purchase?.meme?.name}</td>
-                <td>{purchase.price}</td>
+                <td>{`$${purchase.price}`}</td>
                 <td>{purchase.quantity}</td>
-                <td>{purchase.total}</td>
+                <td>{`$${purchase.total}`}</td>
             </tr>
         ))
     )

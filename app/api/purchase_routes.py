@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import db, Purchase
+from app.models import db, Purchase, Meme
 from random import randint
 # from flask_login import current_user, login_user
 
@@ -21,9 +21,17 @@ def purchase(userId):
         data_sub_purch = data_purchase[key]
         price=data_sub_purch['meme']['price']
         quantity=data_sub_purch['quantity']
+        memeId=data_sub_purch['meme']['id']
+
+        meme = Meme.query.get(memeId)
+
+        meme.quantityAvailable = meme.quantityAvailable - quantity
+
+        db.session.commit()
+
         new_purchase = Purchase(
             userId=userId,
-            memeId=data_sub_purch['meme']['id'],
+            memeId=memeId,
             price=price,
             quantity=quantity,
             total=price*quantity,

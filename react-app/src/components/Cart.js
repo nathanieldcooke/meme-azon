@@ -44,9 +44,15 @@ const Cart = () => {
                 <div className='cart-total'>
                     <span>Total:</span>
                     <span>${cartTotal()}</span>
+                    {
+                    Object.keys(cart)?.length
+                    ?
                     <button
                         onClick={purchase}
                     >Purchase</button>
+                    :
+                    null
+                    }
                 </div>
             </div>
         </div>
