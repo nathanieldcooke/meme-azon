@@ -20,5 +20,5 @@ def seed_cart():
         db.session.commit()
 
 def undo_cart():
-    db.session.execute('TRUNCATE reviews RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE memesincart RESTART IDENTITY CASCADE;')
     db.session.commit()

@@ -174,7 +174,7 @@ def seed_memes():
             price=meme['price'],
             quantityAvailable=meme['quantityAvailable'],
             description=meme['description'],
-            categoryId=meme['categoryId'],
+            # categoryId=meme['categoryId'],
         )
         db.session.add(new_meme)
         db.session.commit()

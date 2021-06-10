@@ -16,6 +16,7 @@ class Meme(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
 
     # category = db.relationship('Category', back_populates='memes')
+    purchases = db.relationship('Purchase', back_populates='meme')
     memesInCart = db.relationship('MemesInCart', back_populates='meme')
     reviews = db.relationship('Review', back_populates='meme')
 

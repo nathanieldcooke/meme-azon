@@ -4,12 +4,14 @@ import session from "./session"
 import memes from "./memes"
 import cart from './cart'
 import reviews from './reviews'
+import purchases from './purchases'
 
 const rootReducer = combineReducers({
     session,
     memes,
     cart,
     reviews,
+    purchases
 });
 
 

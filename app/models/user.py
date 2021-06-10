@@ -35,6 +35,7 @@ class User(db.Model, UserMixin):
   created_at = db.Column(db.DateTime, nullable=False, default=today)
   updated_at = db.Column(db.DateTime, nullable=False, default=today)
 
+  purchases = db.relationship('Purchase', back_populates='user')
   memesInCart = db.relationship('MemesInCart', back_populates='user')
   reviews = db.relationship('Review', back_populates='user')
 

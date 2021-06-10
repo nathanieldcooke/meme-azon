@@ -1,0 +1,30 @@
+.purchases {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 4em; */
+}
+
+.purchases > div {
+    height: 80%;
+    overflow-x: scroll;
+}
+
+table, thead, tr, th, td {
+    border: 1px solid black;
+    font-size: 1.25em;
+}
+
+.order-number {
+    background: rgb(85, 255, 0);
+}
+
+.item-row {
+    background: white;
+}
+
+thead {
+    background: rgb(255, 0, 0);
+}

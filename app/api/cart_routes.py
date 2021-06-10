@@ -51,3 +51,15 @@ def delete_item_in_my_cart(id):
     db.session.commit()
 
     return str(meme_in_cart.id)
+
+@cart_routes.route('/empty/<userId>', methods=['DELETE'])
+def delete_items_in_my_cart(userId):
+
+    memes_in_cart = MemesInCart.query.filter(MemesInCart.userId == userId).all()
+
+    for meme_in_cart in memes_in_cart:
+
+        db.session.delete(meme_in_cart)
+        db.session.commit()
+
+    return 'all memes in cart deleted for user'
