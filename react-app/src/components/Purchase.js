@@ -39,8 +39,6 @@ const Purchase = () => {
     
     orderPurchases(purchases)
 
-    console.log('Purchases: ',purchases)
-
     useEffect(() => {
         if (user.id) {
             dispatch(getPurchasesThunk(user.id))

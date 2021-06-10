@@ -296,7 +296,6 @@ const Meme = ({meme, inCart, reviewRatings}) => {
                                                 onClick={(e) => {
                                                     setEdit(true)
                                                     setRevTarget(e.target.id)
-                                                    console.log(e.target.value)
                                                     setBody(review.body)
                                                     setRating(review.rating)
                                                 }}
