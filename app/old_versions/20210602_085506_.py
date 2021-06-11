@@ -30,10 +30,10 @@ def upgrade():
     sa.Column('price', sa.Float(), nullable=False),
     sa.Column('quantityAvailable', sa.Integer(), nullable=False),
     sa.Column('description', sa.String(), nullable=False),
-    sa.Column('categoryId', sa.Integer(), nullable=False),
+    # sa.Column('categoryId', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
-    sa.ForeignKeyConstraint(['categoryId'], ['categories.id'], ),
+    # sa.ForeignKeyConstraint(['categoryId'], ['categories.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
