@@ -99,3 +99,7 @@
     width: 100%;
     /* height: 3em; */
 }
+
+.soldout {
+    opacity: .5;
+}
