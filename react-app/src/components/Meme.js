@@ -78,7 +78,7 @@ const Meme = ({meme, inCart, reviewRatings}) => {
     }
 
     return (
-        <div className='meme'>
+        <div className={`meme ${meme.quantityAvailable ? null : 'soldout'}`}>
             <div className='meme-title' >
                 {meme.name}
             </div>
@@ -98,6 +98,9 @@ const Meme = ({meme, inCart, reviewRatings}) => {
             </div>
             <div className='add-to-cart'>
                 {
+                    meme.quantityAvailable
+                ?
+                
                 inCart
                 ?
                 <div className='meme-in-cart'>Meme Is In Cart</div>
@@ -130,6 +133,8 @@ const Meme = ({meme, inCart, reviewRatings}) => {
                     >+</button>
                 </div>
                 </>
+                :
+                <div className='meme-in-cart'>Sold Out</div>
                 }
             </div>
             <div className='meme-show-button'>
