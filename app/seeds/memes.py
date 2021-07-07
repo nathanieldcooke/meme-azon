@@ -39,7 +39,7 @@ def seed_memes():
             "categoryId": 1,
         },
         {
-            "src": "https://www.lovequotesmessages.com/wp-content/uploads/2018/05/almost_crying_man_sad_meme1.jpg", 
+            "src": "https://pics.me.me/when-you-smoke-weed-to-get-rid-of-the-sadness-24936599.png",
             "name": "Don't Do Drugs", 
             "price": 3,
             "quantityAvailable": 90,
@@ -63,7 +63,7 @@ def seed_memes():
             "categoryId": 2,
         },
         {
-            "src": "https://www.lovequotesmessages.com/wp-content/uploads/2018/05/banana_sad_meme1.jpg", 
+            "src": "https://sayingimages.com/wp-content/uploads/banana-ariana-grande-meme.jpg",
             "name": "Don't Eat Me", 
             "price": 15,
             "quantityAvailable": 23,
